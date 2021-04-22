@@ -1,3 +1,12 @@
+# Purpose:
+putting into practice the following concepts:
+- Data modeling (Applying Conceptual Modeling, then Construct Fact and Dimension Tables).
+- Database Schema (Apply a specific schema to Fact and Dimension Tables, which suits our Data-Size and Structure => Star-Schema).
+- Getting the best of both worlds by using a `Data-Lake`, by applying Dimensional Modelling to Data with high/known value and store low/unknonwn value Data that was previously not available for analytics.
+- ETL Pipeline (Construct an ETL Pipeline to Extract Data From Log Files on S3 Bucket(that acts as a Data-Lake), then, apply various transformation needed on the Data using `Apache Spark`, before inserting Data into Fact and Dimensional Tables, then load Data back to `AWS S3` Data-Lake).
+- `Apache Spark`
+- `Parquet`
+
 # Project Description:
 A music streaming startup, Sparkify, has grown their user base and song database even more and want to move their data warehouse to a data lake. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
@@ -20,12 +29,12 @@ Data is extracted from two types of JSON source files:
 # Database Schema:
 The schema used for this project is the Star Schema: There is one main fact table containing all the measures associated with each event `songplays`, and 4-dimensional tables `songs`, `artists`, `users` and `time`. Which will contain clean data that is suitable for OLAP(Online Analytical Processing) operations. 
 
-# Data Model Selection:
+# Architecture Selection:
 We used a Data Lake, Due to:
 - The wide variety of Data Formats and structures.
 - It becomes impossible to conform to a single rigid representation of Data, Due to the emerging of new roles as Data Scientist.
 - The `Agile` and `ad-hoc` nature of Data Exploration activities needed by Data Scientists.
-- The wide spectrum of Data transformation needed by the Advanced analytics as `machine learning`, `graph analytics` and `recommender systems`.
+- The wide spectrum of Data transformation needed by the Advanced analytics as `Machine Learning`, `Graph Analytics` and `Recommender Systems`.
 - Massive parallelism and scalability come out of the box by using `Apache Spark` and `AWS S3` as an Example.
 - Using of Columnar Storage as `Parquet`, without expensive `MPP DBs` as `Amazon Redshift`.
 
