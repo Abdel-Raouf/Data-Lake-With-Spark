@@ -1,11 +1,12 @@
 # Purpose:
-putting into practice the following concepts:
+Putting into practice the following concepts:
 - Data modeling (Applying Conceptual Modeling, then Construct Fact and Dimension Tables).
 - Database Schema (Apply a specific schema to Fact and Dimension Tables, which suits our Data-Size and Structure => Star-Schema).
 - Getting the best of both worlds by using a `Data-Lake`, by applying Dimensional Modelling to Data with high/known value and store low/unknonwn value Data that was previously not available for analytics.
-- ETL Pipeline (Construct an ETL Pipeline to Extract Data From Log Files on S3 Bucket(that acts as a Data-Lake), then, apply various transformation needed on the Data using `Apache Spark`, before inserting Data into Fact and Dimensional Tables, then load Data back to `AWS S3` Data-Lake).
-- `Apache Spark`
-- `Parquet`
+- ETL Pipeline (Construct an ETL Pipeline to Extract Data From Log Files on S3 Bucket(that acts as a Data-Lake), then, apply various transformation needed on the Data using `Apache Spark`, before inserting Data into Fact and Dimensional Tables, then write(load) Data back to `AWS S3` Data-Lake as a `Parquet files`).
+- Using `AWS S3` as our Data Lake, due to it's virtually unlimited scalability and the ability to seamlessly increase storage from gigabytes to petabytes of content, paying only for what we use.
+- Using `Apache Spark` to apply Various Transformations on Big-Data as it is a Distributed Computing framework that process data in-memory, while limiting the  writing of intermediate results to the Disk as possible, which makes `Apache Spark` very fast and efficient for processing Big-Data.
+- Using `Apache Parquet`(columnar storage format) to apply Compression on Data and maintain it's structure(schema), which allows for lower data storage costs and maximized effectiveness of querying data with serverless technologies like `Amazon Athena`. 
 
 # Project Description:
 A music streaming startup, Sparkify, has grown their user base and song database even more and want to move their data warehouse to a data lake. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
@@ -46,3 +47,12 @@ We used a Data Lake, Due to:
 # Project Structure:
 1. **etl.py** -> this script will load data from `S3 Bucket`, apply transformations on it using `Apache Spark`, then write them back to `S3 Bucket` in a columnar format(Parquet).
 2. **dl.cfg** -> Configurations file that Conatins  `AWS Credientials` needed to acess the `S3 Bucket` to load the transformed data on it.
+
+# Prerequisite Software(To Run the project locally):
+- Using `anaconda` package manager install:
+1. `Python` 2.7 or above.
+2. `Java` jdk8.
+3. `pyspark` package
+
+# How to Run:
+- Run **etl.py** script from terminal as `python etl.py`.
